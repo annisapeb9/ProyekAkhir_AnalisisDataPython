@@ -13,7 +13,7 @@ all_df = pd.read_csv("dashboard/all_data.csv")
 all_df.sort_values(by="order_approved_at", inplace=True)
 all_df.reset_index(inplace=True)
 
-geolocation = pd.read_csv("D:\A SEMESTER 6 CODING CAMP DBS\Belajar Dasar Analisis Data Dengan Python\ProyekAkhir_AnalisisDataPython_Annisa Permata Bunda\data\geolocation_dataset.csv")
+geolocation = pd.read_csv("data/geolocation_dataset.csv")
 data = geolocation.drop_duplicates(subset='geolocation_zip_code_prefix')
 
 for col in datetime_cols:
@@ -23,7 +23,7 @@ min_date = all_df["order_approved_at"].min()
 max_date = all_df["order_approved_at"].max()
 
 with st.sidebar:
-    st.image("D:\A SEMESTER 6 CODING CAMP DBS\Belajar Dasar Analisis Data Dengan Python\ProyekAkhir_AnalisisDataPython_Annisa Permata Bunda\dashboard\gcl.png", width=200)
+    st.image("dashboard/gcl.png", width=200)
     selected = option_menu(
         menu_title="E-Commerce Dashboard",
         options=["Overview", "Customer Spend", "Order Items", "Reviews", "Demographics"],
