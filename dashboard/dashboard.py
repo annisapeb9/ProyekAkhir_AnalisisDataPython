@@ -9,7 +9,7 @@ from streamlit_option_menu import option_menu
 sns.set(style='darkgrid')
 
 datetime_cols = ["order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date", "order_purchase_timestamp", "shipping_limit_date"]
-all_df = pd.read_csv(./dashboard/all_data.csv)
+all_df = pd.read_csv("dashboard/all_data.csv")
 all_df.sort_values(by="order_approved_at", inplace=True)
 all_df.reset_index(inplace=True)
 
@@ -107,6 +107,30 @@ elif selected == "Customer Spend":
     st.metric(label="Total Spend", value=format_currency(sum_spend_df["total_spend"].sum(), "IDR", locale="id_ID"))
     fig, ax = plt.subplots(figsize=(12, 6))
     ax.plot(sum_spend_df["order_approved_at"], sum_spend_df["total_spend"], marker="o", linewidth=2, color="#90CAF9")
+    st.pyplot(fig)
+
+elif selected == "Order Items":
+    st.header("📦 Order Items")
+    st.metric(label="Total Items Sold", value=sum_order_items_df["product_count"].sum())
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    sns.barplot(y=sum_order_items_df["product_category_name_english"][:10], 
+                x=sum_order_items_df["product_count"][:10], 
+                palette="Blues_r", ax=ax)
+    ax.set_xlabel("Total Orders")
+    ax.set_ylabel("Product Category")
+    ax.set_title("Top 10 Ordered Product Categories")
+    st.pyplot(fig)
+
+elif selected == "Reviews":
+    st.header("⭐ Customer Reviews")
+    st.metric(label="Most Common Review Score", value=common_score)
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.barplot(x=review_score.index, y=review_score.values, palette="coolwarm", ax=ax)
+    ax.set_xlabel("Review Score")
+    ax.set_ylabel("Number of Reviews")
+    ax.set_title("Review Score Distribution")
     st.pyplot(fig)
 
 elif selected == "Demographics":
