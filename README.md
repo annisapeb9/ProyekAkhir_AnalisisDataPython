@@ -2,7 +2,7 @@
 
 ## Deskripsi
 
-Proyek ini bertujuan untuk menganalisis data pada E-Commerce Public Dataset. Tujuan akhirnya adalah untuk menghasilkan wawasan dan informasi yang berguna dari data yang dianalisis.
+Proyek ini bertujuan untuk menganalisis data dari E-Commerce Public Dataset untuk menghasilkan wawasan yang bermanfaat terkait pola pembelian dan perilaku konsumen. Dengan menggunakan Python dan berbagai pustaka analisis data, aplikasi ini dapat memberikan insight yang dapat digunakan untuk meningkatkan pengalaman pengguna dalam e-commerce.
 
 ## Setup Environment - Anaconda
 
